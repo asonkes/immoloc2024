@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Création d'une annonce
+{% endblock %}
+
+<!-- Tu vas dire le theme que tu veux exploiter dasn le fichier, le self, ça veut dire le  -->
+{% form_theme myForm_self %}
+
+{% block body %}
+	<div class="container">
+		<h1>Création d'une nouvelle annonce</h1>
+
+		<!-- Début de mon formulaire -->
+		{{ form_start(myForm) }}
+
+		<!-- Il correspond en l'ensemble du formulaire, c'est pour ça qu'on peut déplacer le bouton. Avec comme paramètre le formulaire (myForm) -->
+
+		<!-- Mais si on met {{ form_widget(//myForm.//title) }}myForm.title, il n'est plus alors que l'input , sans son label -->
+
+		<!-- On peut mettre des options dans le form widget -->
+
+		{{ form_widget(myForm) }}
+			<button type="submit" class="btn btn-primary mt-3"> Création d'une annonce</button>
+
+		<!-- Fin de mon formulaire -->
+		{{ form_end(myForm) }}
+	</div>
+{% endblock %}
+
+<!-- Ici, on ne modifie pas le centre du formulaire, c'est à dire ce que contient le formulaire, si ce n'est pas ça... Ici, c'est la mise en foreme, alors on dit "Form" -->
+<!-- C'est pour dire que le formulaire à quelque chose de spécial... -->
+{% block form_row %}
+	<div class="form-group">
+		<div class="row">
+			<div
+				class="col-6">
+				<!-- Ce n'est pas myForm, c'est le titre de base du formulaire, qui correspond à myForm -->
+				{{form_label(form)}}
+			</div>
+			<div class="col-6">
+				{{form_widget(form)}}
+			</div>
+		</div>
+
+	</div>
+{% endblock %}
+{% block text_widget %}
+	<input type="text" name="{{full_name}}" id="{{id}}" class="form-control">
+{% endblock %}
